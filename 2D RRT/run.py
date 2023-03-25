@@ -16,7 +16,7 @@ def main():
     OBSDIM = 30
     OBSNUM = 200
     GOALRAD = 30
-    MAP = 0
+    MAP = 4
 
     # Obstacles: 200, dims: 30
     # Hard: 0, 3, 6, 7

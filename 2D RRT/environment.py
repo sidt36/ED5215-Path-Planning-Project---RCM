@@ -66,18 +66,38 @@ class envir:
                 obs.append(rectang)
 
         elif self.MAP == 1:
-            rects = {'rect1': ((500, 0), (30, 247)),
-                     'rect2': ((500, 253), (30, 247))}
+            rects = {'rect1': ((500, 0), (30, 146)),
+                     'rect2': ((500, 154), (30, 346))}
             for rect in rects.keys():
-                # obs.append(pygame.Rect((200,200), (30,30)))
                 print(rects[rect][0])
                 obs.append(pygame.Rect(rects[rect][0], rects[rect][1]))
         
         elif self.MAP == 2:
-            rects = {'rect1': ((500, 100), (30, 147)),
-                     'rect2': ((500, 253), (30, 147))}
+            rects = {'rect1': ((500, 100), (30, 46)),
+                     'rect2': ((500, 154), (30, 246))}
             for rect in rects.keys():
-                # obs.append(pygame.Rect((200,200), (30,30)))
+                print(rects[rect][0])
+                obs.append(pygame.Rect(rects[rect][0], rects[rect][1]))
+
+        elif self.MAP == 3:
+            rects = {'rect1': ((500, 0), (30, 346)),
+                     'rect2': ((500, 354), (30, 146)),
+                     'rect3': ((400, 0), (30, 146)),
+                     'rect4': ((400, 154), (30, 346)),
+                     'rect5': ((600, 0), (30, 146)),
+                     'rect6': ((600, 154), (30, 346))}
+            for rect in rects.keys():
+                print(rects[rect][0])
+                obs.append(pygame.Rect(rects[rect][0], rects[rect][1]))
+        
+        elif self.MAP == 4:
+            rects = {'rect1': ((500, 50), (30, 146)),
+                     'rect2': ((500, 204), (30, 196)),
+                     'rect3': ((400, 100), (30, 46)),
+                     'rect4': ((400, 154), (30, 246)),
+                     'rect5': ((600, 100), (30, 46)),
+                     'rect6': ((600, 154), (30, 246))}
+            for rect in rects.keys():
                 print(rects[rect][0])
                 obs.append(pygame.Rect(rects[rect][0], rects[rect][1]))
 
