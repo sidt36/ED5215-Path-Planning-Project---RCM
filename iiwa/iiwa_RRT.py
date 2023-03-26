@@ -32,11 +32,8 @@ class RRT:
         return d
     
     def dist_squared(self, p1, p2):
+        # Can be used for cartesian as well as 7 dof coords
         return np.sum((p2-p1)**2)
-    
-    # def cart_dist_squared(self, x1, x2):
-    #     # cartesian distance
-    #     return (x2 - x1)**2
     
     def nearest(self, p):
         d = self.dist_squared_all(p)
@@ -73,11 +70,14 @@ class RRT:
         x7 = int(random.uniform(self.rangel, self.rangeh))
         return np.array([x1, x2, x3, x4, x5, x6, x7])
         
-
-    
     def lin_interpol(self, p1, p2, alpha):
         p3 = p1 + alpha * (p2-p1)
         return p3
+
+    def collision_checker(self):
+        # Add collision checker
+        # Return True if collision else False
+        return False
 
     def collision(self, p1, p2):
         # collision checker
@@ -87,9 +87,8 @@ class RRT:
             ps.append(pnew)
         
         for p in ps:
-            # collision checker 
-            # return True if collision
-            pass
+            if self.collision_checker(p):
+                return True
         return False
 
     def cut_dist(self, p1, p2):
@@ -105,7 +104,6 @@ class RRT:
         pass
 
     def is_goal(self, p):
-        # Implement FK
         x, y, z = self.FK(p)
         d = self.dist_squared(np.array(x, y, z), np.array(self.goal))
         return d <= self.GOALRAD ** 2
@@ -161,8 +159,10 @@ class RRT:
     def get_goal_cost(self):
         return self.get_cost(self.goalidx)
 
-    def run_algo(self):
-        while not self.goal_flag:
-            self.step
+    def run_algo(self, max_iter):
+        for iter in range(1,1 + max_iter):
+            self.step()
+            if self.goal_flag:
+                break
         path = self.get_path()
         return path
