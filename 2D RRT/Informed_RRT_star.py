@@ -18,7 +18,6 @@ class IRRT_star:
         self.ys = [self.start[1]]
         self.parents = [0]
         self.obstacles = obstacles
-        self.goal_state = None
         self.path = []
         self.goalidx = None
         self.costs = {}
