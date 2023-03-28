@@ -3,7 +3,7 @@ import random
 import numpy as np
 
 class envir:
-    def __init__(self, start, goal, goalrad, mapdims, obsdim=0, obsnum=0, MAP=0):
+    def __init__(self, start, goal, goalrad, mapdims, algo_name, obsdim=0, obsnum=0, MAP=0):
         self.start = start
         self.goal = goal
         self.mapdims = mapdims
@@ -11,7 +11,7 @@ class envir:
         self.goalrad = goalrad
         self.MAP = MAP
         
-        self.map_window_name = 'Test'
+        self.map_window_name = algo_name
         pygame.display.set_caption(self.map_window_name)
         self.map = pygame.display.set_mode((self.mapw, self.maph))
         self.map.fill((255, 255, 255))

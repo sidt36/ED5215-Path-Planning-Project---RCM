@@ -1,14 +1,16 @@
 import pygame
 import time 
+import numpy as np
 from environment import envir
 from RRT import RRT
 from RRT_star import RRT_star
 from Informed_RRT_star import IRRT_star
+import imageio
 
 def main():
-    # ALGO = 'RRT'
+    ALGO = 'RRT'
     # ALGO = 'RRT_star'
-    ALGO = 'IRRT_star'
+    # ALGO = 'IRRT_star'
 
     MAPDIMS = (500, 1000)
     START = (100, 250)
@@ -16,16 +18,20 @@ def main():
     OBSDIM = 30
     OBSNUM = 200
     GOALRAD = 30
-    MAP = 4
+    MAP = 0
 
     # Obstacles: 200, dims: 30
     # Hard: 0, 3, 6, 7
     # Medium: 1
     # Easy: 2
-    SEED = 6
+    SEED = 2
     
+    frames = []
+    gif_name = 'Map' + str(MAP) + '_' + ALGO + '.gif'
+    print(gif_name)
+
     pygame.init()
-    map_ = envir(START, GOAL, GOALRAD, MAPDIMS, OBSDIM, OBSNUM, MAP)
+    map_ = envir(START, GOAL, GOALRAD, MAPDIMS, ALGO, OBSDIM, OBSNUM, MAP)
     obstacles = map_.makeobs(SEED)
     map_.drawMap(obstacles)
     ITER = 0
@@ -38,7 +44,7 @@ def main():
         algo = IRRT_star(START, GOAL, GOALRAD, MAPDIMS, obstacles)
 
     # t1=time.time()
-    while ITER <= 5000:
+    while ITER <= 2000:
         ITER += 1
         print(f'Searching for Goal, {ITER}')
 
@@ -53,12 +59,19 @@ def main():
             pygame.display.update()
             # time.sleep(0.5)
 
+            frame = pygame.surfarray.array3d(pygame.display.get_surface())
+            frame = np.flip(frame, 0)
+            frame = np.rot90(frame, k=3)
+            frames.append(frame)
+
     print('Goal Found')
     print(f'Cost to Goal: {algo.get_goal_cost()}')
     # map_.drawPath(algo.get_path())
     # pygame.display.update()
     pygame.event.clear()
-    pygame.event.wait(15000)
+    imageio.mimsave(gif_name, frames, fps=30)
+    # pygame.event.wait(5000)
+    pygame.quit()
 
 
 

@@ -1,7 +1,7 @@
 import random
 import numpy as np 
 
-class IRRT_star:
+class RRT_star:
     def __init__(self, start, goal, goalrad, mapdims, obstacles):
         self.ALPHA = 0.5
         self.GOALRAD = goalrad
@@ -19,7 +19,7 @@ class IRRT_star:
         self.parents = [0]
         self.obstacles = obstacles
         self.path = []
-        self.goalidx = None
+        self.goalidx = 0
         self.costs = {}
 
     def add_node(self, x_, y_, p_):
@@ -45,29 +45,13 @@ class IRRT_star:
         return xnear, ynear, idxnear
 
     def sample_envir(self):
-        if not self.goal_flag:
-            if self.BIAS > random.uniform(0, 1) and not self.goal_flag:
-                return self.goal[0], self.goal[1]
-            else:
-                x = int(random.uniform(0, self.mapw))
-                y = int(random.uniform(0, self.maph))
-                return x, y
+        if self.BIAS > random.uniform(0, 1) and not self.goal_flag:
+            return self.goal[0], self.goal[1]
         else:
-            if self.BIAS/3 > random.uniform(0, 1) and not self.goal_flag:
-                return self.goal[0], self.goal[1]
-            else: 
-                a = self.ellipse['a']
-                b = self.ellipse['b']
-                centre = self.ellipse['centre']
-                alpha = self.ellipse['alpha']
-                theta = random.uniform(0, 2 * np.pi)
-                d = random.triangular(0, 1, 1)
-                X = d * a * np.cos(theta)
-                Y = d * b * np.sin(theta)
-                x = centre[0] + np.cos(alpha) * Y + np.sin(alpha) * X
-                y = centre[1] - np.sin(alpha) * Y + np.cos(alpha) * X
-                return x, y
-        
+            x = int(random.uniform(0, self.mapw))
+            y = int(random.uniform(0, self.maph))
+            return x, y
+    
     def lin_interpol(self, x1, y1, x2, y2, alpha):
         xint = x1 + alpha * (x2-x1)
         yint = y1 + alpha * (y2-y1)
@@ -110,6 +94,7 @@ class IRRT_star:
                     cmin = c
                     idxmin = i
         self.parents[k] = idxmin
+
         for i in idxs:
             if i == k or i == 0:
                 continue
@@ -131,20 +116,13 @@ class IRRT_star:
                 self.goal_flag = True
                 self.goalidx = len(self.xs) - 1
                 self.goal_idxs.append(self.goalidx)
-                goalx = self.xs[self.get_min_goal_idx()]
-                goaly = self.ys[self.get_min_goal_idx()]
-                alpha = np.arctan2(goalx - self.start[0], goaly - self.start[1])
-                centre = ((self.start[0] + goalx)/2, (self.start[1] + goaly)/2)
-                a = self.get_goal_cost()/2
-                b = np.sqrt(a**2 - self.dist_squared(goalx, goaly, centre[0], centre[1]))
-                self.ellipse = {'alpha': alpha, 'centre':centre, 'a':a, 'b':b}
             return True
         return False
     
     def is_goal(self, x, y):
         d = self.dist_squared(x, y, self.goal[0], self.goal[1])
         return d <= self.GOALRAD ** 2
-
+    
     def step(self):
         flag = False
         while not flag:
@@ -189,7 +167,7 @@ class IRRT_star:
         return c
 
     def get_goal_cost(self):
-        return self.get_cost(self.get_min_goal_idx())
+        return self.get_cost(self.goalidx)
 
     def run_algo(self):
         while not self.goal_flag:
