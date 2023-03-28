@@ -8,9 +8,9 @@ from Informed_RRT_star import IRRT_star
 import imageio
 
 def main():
-    ALGO = 'RRT'
+    # ALGO = 'RRT'
     # ALGO = 'RRT_star'
-    # ALGO = 'IRRT_star'
+    ALGO = 'IRRT_star'
 
     MAPDIMS = (500, 1000)
     START = (100, 250)
@@ -24,17 +24,18 @@ def main():
     # Hard: 0, 3, 6, 7
     # Medium: 1
     # Easy: 2
-    SEED = 2
+    SEED = 6
     
     frames = []
-    gif_name = 'Map' + str(MAP) + '_' + ALGO + '.gif'
+    path = 'D:\IITM Academic Stuff\Sem 8 Books\ED5215\Project\ED5215-Path-Planning-Project---RCM\Algorithms\Result_GIFs'
+    gif_name = path + '\Map' + str(MAP) + '_' + ALGO + '.gif'
     print(gif_name)
 
     pygame.init()
     map_ = envir(START, GOAL, GOALRAD, MAPDIMS, ALGO, OBSDIM, OBSNUM, MAP)
     obstacles = map_.makeobs(SEED)
     map_.drawMap(obstacles)
-    ITER = 0
+    ITER = -1
 
     if ALGO == 'RRT':
         algo = RRT(START, GOAL, GOALRAD, MAPDIMS, obstacles)
@@ -44,13 +45,13 @@ def main():
         algo = IRRT_star(START, GOAL, GOALRAD, MAPDIMS, obstacles)
 
     # t1=time.time()
-    while ITER <= 2000:
+    while ITER < 3000:
         ITER += 1
         print(f'Searching for Goal, {ITER}')
 
         X, Y, P = algo.visualize_step()
 
-        if ITER % 1 == 0:
+        if ITER % 100 == 0:
             map_.reset_draw_everything(X, Y, P)
             if algo.goal_flag:
                 map_.drawPath(algo.get_path())
@@ -69,7 +70,7 @@ def main():
     # map_.drawPath(algo.get_path())
     # pygame.display.update()
     pygame.event.clear()
-    imageio.mimsave(gif_name, frames, fps=30)
+    imageio.mimsave(gif_name, frames, fps=5)
     # pygame.event.wait(5000)
     pygame.quit()
 
