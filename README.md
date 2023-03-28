@@ -1,9 +1,10 @@
 # ED5215 Path Planning Project - RCM
 
 Team:
+
 Shrung D N - ME19B168
 
-Sidharth Tadeparthi - ME19B051
+Sidharth Tadeparti - ME19B051
 
 Tejas Rao - ME19B179
 
