@@ -1,0 +1,8 @@
+prefix=/home/sidharth/catkin_ws/devel
+
+Name: rao_kuka_controller
+Description: Description of rao_kuka_controller
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

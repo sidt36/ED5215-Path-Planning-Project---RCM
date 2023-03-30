@@ -1,0 +1,8 @@
+prefix=/home/sidharth/catkin_ws/devel
+
+Name: MY_IIWA_ROBOT_control
+Description: Description of MY_IIWA_ROBOT_control
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
