@@ -70,7 +70,9 @@ def main():
     # map_.drawPath(algo.get_path())
     # pygame.display.update()
     pygame.event.clear()
-    imageio.mimsave(gif_name, frames, fps=5)
+
+    # imageio.mimsave(gif_name, frames, fps=5)
+    
     # pygame.event.wait(5000)
     pygame.quit()
 
