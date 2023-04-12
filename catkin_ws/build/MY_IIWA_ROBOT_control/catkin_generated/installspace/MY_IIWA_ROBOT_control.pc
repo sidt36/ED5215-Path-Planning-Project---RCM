@@ -1,0 +1,8 @@
+prefix=/home/sidharth/RCM_Proj/ED5215-Path-Planning-Project---RCM/catkin_ws/install
+
+Name: MY_IIWA_ROBOT_control
+Description: Description of MY_IIWA_ROBOT_control
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/sidharth/catkin_ws/install
+
+Name: two_iiwa_gazebo
+Description: Description of two_iiwa_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
