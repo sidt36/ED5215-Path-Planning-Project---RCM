@@ -1,8 +1,8 @@
 # generated from catkin/cmake/template/pkg.context.pc.in
 CATKIN_PACKAGE_PREFIX = ""
-PROJECT_PKG_CONFIG_INCLUDE_DIRS = "/home/sidharth/catkin_ws/src/iiwa_stack/iiwa_hw/include".split(';') if "/home/sidharth/catkin_ws/src/iiwa_stack/iiwa_hw/include" != "" else []
+PROJECT_PKG_CONFIG_INCLUDE_DIRS = "/home/sidharth/RCM_Proj/ED5215-Path-Planning-Project---RCM/catkin_ws/src/iiwa_stack/iiwa_hw/include".split(';') if "/home/sidharth/RCM_Proj/ED5215-Path-Planning-Project---RCM/catkin_ws/src/iiwa_stack/iiwa_hw/include" != "" else []
 PROJECT_CATKIN_DEPENDS = "iiwa_ros;iiwa_msgs;pluginlib;controller_interface;controller_manager;hardware_interface;control_toolbox".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "-liiwa_hw".split(';') if "-liiwa_hw" != "" else []
 PROJECT_NAME = "iiwa_hw"
-PROJECT_SPACE_DIR = "/home/sidharth/catkin_ws/devel"
+PROJECT_SPACE_DIR = "/home/sidharth/RCM_Proj/ED5215-Path-Planning-Project---RCM/catkin_ws/devel"
 PROJECT_VERSION = "1.4.0"

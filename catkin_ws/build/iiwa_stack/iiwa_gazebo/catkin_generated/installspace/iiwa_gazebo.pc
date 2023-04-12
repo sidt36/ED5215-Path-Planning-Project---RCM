@@ -1,4 +1,4 @@
-prefix=/home/sidharth/catkin_ws/install
+prefix=/home/sidharth/RCM_Proj/ED5215-Path-Planning-Project---RCM/catkin_ws/install
 
 Name: iiwa_gazebo
 Description: Description of iiwa_gazebo

@@ -1,4 +1,4 @@
-prefix=/home/sidharth/catkin_ws/devel
+prefix=/home/sidharth/RCM_Proj/ED5215-Path-Planning-Project---RCM/catkin_ws/devel
 
 Name: gazebo_tutorials
 Description: Description of gazebo_tutorials

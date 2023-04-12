@@ -1,8 +1,8 @@
-prefix=/home/sidharth/catkin_ws/devel
+prefix=/home/sidharth/RCM_Proj/ED5215-Path-Planning-Project---RCM/catkin_ws/devel
 
 Name: iiwa_ros
 Description: Description of iiwa_ros
 Version: 1.4.0
-Cflags: -I/home/sidharth/catkin_ws/src/iiwa_stack/iiwa_ros/include
+Cflags: -I/home/sidharth/RCM_Proj/ED5215-Path-Planning-Project---RCM/catkin_ws/src/iiwa_stack/iiwa_ros/include
 Libs: -L${prefix}/lib -liiwa_ros
 Requires: iiwa_msgs roscpp

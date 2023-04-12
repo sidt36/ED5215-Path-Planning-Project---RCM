@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "iiwa_moveit"
-PROJECT_SPACE_DIR = "/home/sidharth/catkin_ws/devel"
+PROJECT_SPACE_DIR = "/home/sidharth/RCM_Proj/ED5215-Path-Planning-Project---RCM/catkin_ws/devel"
 PROJECT_VERSION = "1.4.0"
