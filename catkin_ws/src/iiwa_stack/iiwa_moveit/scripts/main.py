@@ -65,8 +65,9 @@ if __name__=="__main__":
     joint_goal[6] = start[6]
 
     move_group.go(joint_goal, wait=True)
-    move_group.stop()    
-    goalrad = 0.03
+    move_group.stop()
+
+    goalrad = 0.5
     goal,_ = tf_total(0.9,0.9,0.9,0.9,0.9,0.9,0.9)
     #goal = [0.1,0.1,0.1]
     print(goal)

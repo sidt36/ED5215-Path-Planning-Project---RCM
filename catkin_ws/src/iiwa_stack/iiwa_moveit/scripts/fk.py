@@ -19,7 +19,7 @@ def tf_total(x1,x2,x3,x4,x5,x6,x7,location='needle_tip'):
     d5 = 0.4
     d7 = 0.645
 
-    if(location == 'needle_tip_base'):
+    if(location == 'needle_base'):
         d7 = 0.126
     if(location == 'needle_tip'):
         d7 = 0.645
