@@ -27,7 +27,7 @@ class RRT_star:
         self.GOALRAD = goalrad
         self.BIAS = 0.2
         self.DIST = 0.1
-
+        self.NEIGH = 1
         self.start = start
         self.goal = goal
         self.goal_flag = False
@@ -134,7 +134,7 @@ class RRT_star:
         return d <= self.GOALRAD ** 2
     
     def update_tree(self, k):
-        p = [self.x1[k], self.x2[k], self.x3[k], self.x4[k], self.x5[k], self.x6[k], self.x7[k]]
+        p = np.array([self.x1[k], self.x2[k], self.x3[k], self.x4[k], self.x5[k], self.x6[k], self.x7[k]])
         d = self.dist_squared_all(p)
         idxs = list(np.where(d <= self.NEIGH**2)[0])
         cmin = self.get_cost(k)
@@ -142,7 +142,7 @@ class RRT_star:
         for i in idxs:
             if i == k:
                 continue
-            pi =  [self.x1[i], self.x2[i], self.x3[i], self.x4[i], self.x5[i], self.x6[i], self.x7[i]]
+            pi =  np.array([self.x1[i], self.x2[i], self.x3[i], self.x4[i], self.x5[i], self.x6[i], self.x7[i]])
             c = self.get_cost(i) + np.sqrt(self.dist_squared(p, pi))
             if  c < cmin:
                 if not self.collision(p,pi):
@@ -215,7 +215,7 @@ class RRT_star:
 
     def run_algo(self, max_iter):
         iter = 0
-        while iter < max_iter and (not self.goal_flag):
+        while iter < max_iter:
             iter += 1
             self.step()
 
@@ -237,7 +237,7 @@ if __name__ == "__main__":
     goalrad = 0.5
     #goal,_ = tf_total(0.5,0.5,0.5,0.5,0.5,0.5,0.5)
     goal = [0.5,0.5,0.5]
-    RRT_Instance = RRT(start, np.array(goal), goalrad)
+    RRT_Instance = RRT_star(start, np.array(goal), goalrad)
     Path = RRT_Instance.run_algo(1000)
     print(tf_total(Path[-1][0],Path[-1][1],Path[-1][2],Path[-1][3],Path[-1][4],Path[-1][5],Path[-1][6]))
     print(Path)   

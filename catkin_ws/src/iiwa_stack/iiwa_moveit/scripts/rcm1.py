@@ -61,15 +61,15 @@ print("============ Printing robot state")
 print(robot.get_current_state())
 print("")
 
-
+mult = pi/180
 joint_goal = move_group.get_current_joint_values()
-joint_goal[0] = 0
-joint_goal[1] = 0
-joint_goal[2] = 0
-joint_goal[3] = -tau/8
-joint_goal[4] = tau/12
-joint_goal[5] = tau/6  # 1/6 of a turn
-joint_goal[6] = 0
+joint_goal[0] = 0*mult
+joint_goal[1] = 10*mult
+joint_goal[2] = 30*mult
+joint_goal[3] = 0*mult#tau/8
+joint_goal[4] = -55*mult # tau/8
+joint_goal[5] = 0*mult#-tau/8 # tau/6   1/6 of  turn
+joint_goal[6] = 45*mult
 
 # The go command can be called with joint values, poses, or without any
 # parameters if you have already set the pose or joint target for the group

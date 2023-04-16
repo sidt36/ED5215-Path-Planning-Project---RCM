@@ -27,7 +27,7 @@
         </solver>
       </ode>
     </physics>
-    
+       
     <!-- Focus camera -->
     <gui fullscreen='0'>
       <camera name='user_camera'>
@@ -35,6 +35,25 @@
 	<view_controller>orbit</view_controller>
       </camera>
     </gui>
+    <model name="sphere">
+      <pose>1 0.4 0.3 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.05</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>Gazebo/WoodPallet</script>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    
+    
     
   </world>
   
