@@ -5,12 +5,16 @@ from environment import envir
 from RRT import RRT
 from RRT_star import RRT_star
 from Informed_RRT_star import IRRT_star
+from RRT_variation import RRT_2
+from RRT_Connect import RRTC
 import imageio
 
 def main():
     # ALGO = 'RRT'
     # ALGO = 'RRT_star'
-    ALGO = 'IRRT_star'
+    # ALGO = 'IRRT_star'
+    # ALGO = 'RRT_2'
+    ALGO = 'RRTC'
 
     MAPDIMS = (500, 1000)
     START = (100, 250)
@@ -24,7 +28,7 @@ def main():
     # Hard: 0, 3, 6, 7
     # Medium: 1
     # Easy: 2
-    SEED = 6
+    SEED = 1
     
     frames = []
     path = 'D:\IITM Academic Stuff\Sem 8 Books\ED5215\Project\ED5215-Path-Planning-Project---RCM\Algorithms\Result_GIFs'
@@ -43,15 +47,19 @@ def main():
         algo = RRT_star(START, GOAL, GOALRAD, MAPDIMS, obstacles)
     elif ALGO == 'IRRT_star':
         algo = IRRT_star(START, GOAL, GOALRAD, MAPDIMS, obstacles)
+    elif ALGO == 'RRT_2':
+        algo = RRT_2(START, GOAL, GOALRAD, MAPDIMS, obstacles)
+    elif ALGO == 'RRTC':
+        algo = RRTC(START, GOAL, GOALRAD, MAPDIMS, obstacles)
 
     # t1=time.time()
-    while ITER < 3000:
+    while ITER < 1000:
         ITER += 1
         print(f'Searching for Goal, {ITER}')
 
         X, Y, P = algo.visualize_step()
 
-        if ITER % 100 == 0:
+        if ITER % 1 == 0:
             map_.reset_draw_everything(X, Y, P)
             if algo.goal_flag:
                 map_.drawPath(algo.get_path())
@@ -86,4 +94,6 @@ if __name__ == '__main__':
     #         result=True
     #     except:
     #         result=False
+    
+
     main()
