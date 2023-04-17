@@ -61,7 +61,7 @@ print("============ Printing robot state")
 print(robot.get_current_state())
 print("")
 
-mult = pi/180
+mult = 3.14/180
 joint_goal = move_group.get_current_joint_values()
 joint_goal[0] = 0*mult
 joint_goal[1] = 10*mult

@@ -11,7 +11,6 @@ import geometry_msgs.msg
 
 import random
 import numpy as np 
-from fk import tf_total
 
 
 class RRT:
@@ -119,9 +118,8 @@ class RRT:
         return EE_position
 
     def is_goal(self, p):
-        # Implement FK
-        x, y, z = self.FK(p)
-        d = self.dist_squared(np.array([x, y, z]), np.array(self.goal))
+        
+        d = self.dist_squared(p,np.array(self.goal))
         return d <= self.GOALRAD ** 2
 
     def add_node(self):
@@ -186,7 +184,7 @@ class RRT:
             cmin = np.inf
             idxmin = 0
             for i in range(len(self.x1)):
-                c = self.dist_squared(self.FK(np.array([self.x1[i], self.x2[i], self.x3[i], self.x4[i], self.x5[i], self.x6[i], self.x7[i]])), np.array(self.goal))
+                c = self.dist_squared((np.array([self.x1[i], self.x2[i], self.x3[i], self.x4[i], self.x5[i], self.x6[i], self.x7[i]])), np.array(self.goal))
                 if c < cmin:
                     cmin = c
                     idxmin = i
@@ -200,8 +198,9 @@ if __name__ == "__main__":
     start = [0.1,0.1,0.1,0.1,0.1,0.1,0.1]
     goalrad = 0.5
     #goal,_ = tf_total(0.5,0.5,0.5,0.5,0.5,0.5,0.5)
-    goal = [0.5,0.5,0.5]
+    #goal = [0.5,0.5,0.5]
+    goal = [0.5,0.5,0.5,0.5,0.5,0.5,0.5]
     RRT_Instance = RRT(start, np.array(goal), goalrad)
-    Path = RRT_Instance.run_algo(1000)
+    Path = RRT_Instance.run_algo(3000)
     print(tf_total(Path[-1][0],Path[-1][1],Path[-1][2],Path[-1][3],Path[-1][4],Path[-1][5],Path[-1][6]))
     print(Path)   

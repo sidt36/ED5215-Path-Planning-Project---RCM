@@ -19,14 +19,13 @@ import geometry_msgs.msg
 import random
 import numpy as np 
 from fk import tf_total
-
-
+from collision_checker import collision
 class RRT_star:
     def __init__(self, start, goal, goalrad):
         self.ALPHA = 0.05
         self.GOALRAD = goalrad
         self.BIAS = 0.2
-        self.DIST = 0.1
+        self.DIST = 0.01
         self.NEIGH = 1
         self.start = start
         self.goal = goal
@@ -45,6 +44,7 @@ class RRT_star:
         # self.obstacles = obstacles
         self.path = []
         self.goalidx = None
+        self.goal_idxs = []
 
 
 
@@ -94,14 +94,17 @@ class RRT_star:
 
     def collision(self, p1, p2):
         # collision checker
+        self.RCM_Coordinates = np.array([1.05 ,0.15 ,0.37])
+        self.RCM_Orientation= np.array([-1,-1,1])
+        self.RCM_Radius = 0.1
+        self.Safety_Radius = 0.2
         ps = []
         for alpha in np.linspace(0, 1, 101):
             pnew= self.lin_interpol(p1, p2, alpha)
             ps.append(pnew)
         
         for p in ps:
-            # collision checker 
-            # return True if collision
+            #return(collision(p,self.RCM_Coordinates,self.RCM_Orientation,self.RCM_Radius,self.Safety_Radius))
             pass
         return False
 
@@ -167,10 +170,11 @@ class RRT_star:
             self.x6.append(xint[5])
             self.x7.append(xint[6])
             self.parents.append(pnear)
-            if self.is_goal(xint) and not self.goal_flag:
+            if self.is_goal(xint):
                 self.goal_flag = True
                 print('Flag Changed')
                 self.goalidx = len(self.x1) - 1
+                self.goal_idxs.append(self.goalidx)
             return True
         return False
     
@@ -184,6 +188,7 @@ class RRT_star:
     #     return self.x1, self.x2, self.x3, self.x4, self.x5, self.x6, self.x7, self.parents
 
     def get_path(self):
+        self.goalidx = self.get_min_goal_idx()
         path = [(self.x1[self.goalidx], self.x2[self.goalidx], self.x3[self.goalidx], self.x4[self.goalidx], self.x5[self.goalidx], self.x6[self.goalidx], self.x7[self.goalidx])]
         p = self.parents[self.goalidx]
         while p != 0:
@@ -191,6 +196,20 @@ class RRT_star:
             p = self.parents[p]
         path.reverse()
         return path
+    
+    def get_point_from_idx(self, i):
+        return np.array([self.x1[i], self.x2[i], self.x3[i], self.x4[i], self.x5[i], self.x6[i], self.x7[i]])
+
+    def get_min_goal_idx(self):
+        cmin = np.inf
+        idxmin = 0
+        for i in self.goal_idxs:
+            pi = self.get_point_from_idx(i)
+            c = self.dist_squared(pi, self.goal)
+            if c <= cmin:
+                cmin = c
+                idxmin = i
+        return idxmin
 
     def get_cost(self, n):
         c = 0
@@ -225,11 +244,11 @@ class RRT_star:
 
 if __name__ == "__main__":
 
-    start = [0.1,0.1,0.1,0.1,0.1,0.1,0.1]
-    goalrad = 0.5
+    start = [0.80423491,  1.90611439, -2.15948642 ,-0.78850263 ,-2.67168602 ,-1.2173844, 3.02918738]
+    goalrad = 1
     #goal,_ = tf_total(0.5,0.5,0.5,0.5,0.5,0.5,0.5)
     # goal = [0.5,0.5,0.5]
-    goal = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+    goal = [ 0.94502209 , 1.23225196 , 1.76922747 , 1.87633753 ,-0.53324368 , 1.20997036, -1.49405437]
     RRT_Instance = RRT_star(start, np.array(goal), goalrad)
     Path = RRT_Instance.run_algo(1000)
     print(tf_total(Path[-1][0],Path[-1][1],Path[-1][2],Path[-1][3],Path[-1][4],Path[-1][5],Path[-1][6]))
