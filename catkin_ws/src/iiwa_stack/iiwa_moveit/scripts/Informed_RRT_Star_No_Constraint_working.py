@@ -202,6 +202,7 @@ class Informed_RRT_star:
     #     return self.x1, self.x2, self.x3, self.x4, self.x5, self.x6, self.x7, self.parents
 
     def get_path(self):
+        self.goalidx = self.get_min_goal_idx()
         path = [(self.x1[self.goalidx], self.x2[self.goalidx], self.x3[self.goalidx], self.x4[self.goalidx], self.x5[self.goalidx], self.x6[self.goalidx], self.x7[self.goalidx])]
         p = self.parents[self.goalidx]
         while p != 0:
@@ -209,6 +210,17 @@ class Informed_RRT_star:
             p = self.parents[p]
         path.reverse()
         return path
+
+    def get_min_goal_idx(self):
+        cmin = np.inf
+        idxmin = 0
+        for i in self.goal_idxs:
+            pi = self.get_point_from_idx(i)
+            c = self.dist_squared(pi, self.goal)
+            if c <= cmin:
+                cmin = c
+                idxmin = i
+        return idxmin
 
     def get_cost(self, n):
         c = 0
@@ -226,7 +238,7 @@ class Informed_RRT_star:
 
     def run_algo(self, max_iter):
         iter = 0
-        while iter < max_iter and (not self.goal_flag):
+        while iter < max_iter:
             iter += 1
             self.step()
 
