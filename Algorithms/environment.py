@@ -44,6 +44,11 @@ class envir:
         self.draw_all_nodes(x, y)
         self.draw_all_edges(x, y, p)
 
+    def draw_everything(self, x, y, p):
+        self.drawMap(self.obstacles)
+        self.draw_all_nodes(x, y)
+        self.draw_all_edges(x, y, p)
+
     def makeRandomRect(self):
         uppercornerx = int(np.random.uniform(0, self.mapw - self.obsDim))
         uppercornery = int(np.random.uniform(0, self.maph - self.obsDim))

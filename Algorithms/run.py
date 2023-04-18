@@ -57,10 +57,18 @@ def main():
         ITER += 1
         print(f'Searching for Goal, {ITER}')
 
-        X, Y, P = algo.visualize_step()
-
+        if ALGO != 'RRTC':
+            X, Y, P = algo.visualize_step()
+        else:
+            start_tree, goal_tree = algo.visualize_step()
+            X1, Y1, P1 = start_tree['xs'], start_tree['ys'], start_tree['parents']
+            X2, Y2, P2 = goal_tree['xs'], goal_tree['ys'], goal_tree['parents']
         if ITER % 1 == 0:
-            map_.reset_draw_everything(X, Y, P)
+            if ALGO != 'RRTC':
+                map_.reset_draw_everything(X, Y, P)
+            else:
+                map_.reset_draw_everything(X1, Y1, P1)
+                map_.draw_everything(X2, Y2, P2)
             if algo.goal_flag:
                 map_.drawPath(algo.get_path())
                 if ALGO == 'IRRT_star':
@@ -74,7 +82,8 @@ def main():
             frames.append(frame)
 
     print('Goal Found')
-    print(f'Cost to Goal: {algo.get_goal_cost()}')
+    if ALGO != 'RRTC':
+        print(f'Cost to Goal: {algo.get_goal_cost()}')
     # map_.drawPath(algo.get_path())
     # pygame.display.update()
     pygame.event.clear()

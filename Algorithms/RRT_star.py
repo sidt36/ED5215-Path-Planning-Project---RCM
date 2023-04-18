@@ -101,6 +101,7 @@ class RRT_star:
             if self.get_cost(k) + np.sqrt(self.dist_squared(self.xs[k], self.ys[k], self.xs[i], self.ys[i])) < self.get_cost(i):
                 if not self.collision(self.xs[k], self.ys[k], self.xs[i], self.ys[i]):
                     self.parents[i] = k
+                    print('UPDATED')
 
     def add_node(self):
         xsample, ysample = self.sample_envir()

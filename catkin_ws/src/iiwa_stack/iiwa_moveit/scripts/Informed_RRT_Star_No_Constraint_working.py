@@ -167,6 +167,7 @@ class Informed_RRT_star:
             if self.get_cost(k) + np.sqrt(self.dist_squared(p,pi)) < self.get_cost(i):
                 if not self.collision(p,pi):
                     self.parents[i] = k
+                    print('UPDATE')
                     
                     
                     
