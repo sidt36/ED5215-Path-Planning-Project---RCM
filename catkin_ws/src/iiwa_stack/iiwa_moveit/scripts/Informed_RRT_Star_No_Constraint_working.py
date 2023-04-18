@@ -84,7 +84,7 @@ class Informed_RRT_star:
         #     x7 = int(random.uniform(self.rangel, self.rangeh))
         #     return np.array([x1, x2, x3, x4, x5, x6, x7])
         
-        if not self.goalidx:
+        if not self.goal_flag:
 # =============================================================================
 #             print('blah')
 # =============================================================================
