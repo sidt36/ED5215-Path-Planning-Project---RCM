@@ -13,7 +13,7 @@ Various Path Planning Algorithms implemented to solve the issues related to RCM 
 
 
 
-** Running the Code **
+**Running the Code**
 - To open the simulator: roslaunch iiwa_tool_moveit moveit_planning_and_execution.launch
 - To start the controller: rosrun iiwa_control sunrise2.py 
 - To plan and execute path: rosrun iiwa_moveit main2.py
