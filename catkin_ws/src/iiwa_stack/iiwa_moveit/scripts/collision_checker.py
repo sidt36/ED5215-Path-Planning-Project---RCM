@@ -48,7 +48,7 @@ def constraint_check(Needle_Base_Position,Needle_Tip_Position,RCM_Coordinates,RC
     for i in way_pt_gen:
         x = x0 + (xf-x0)*i
         if(np.linalg.norm(x - RCM_Coordinates)<= RCM_Radius*epsilon):
-            flag = True
+            return True
     return flag        
 
 

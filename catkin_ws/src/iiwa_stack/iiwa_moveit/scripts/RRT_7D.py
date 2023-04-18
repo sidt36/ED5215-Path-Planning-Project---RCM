@@ -2,13 +2,15 @@
 
 import random
 import numpy as np 
+from collision_checker import collision
+
 
 class RRT:
     def __init__(self, start, goal, goalrad):
         self.ALPHA = 0.05
         self.GOALRAD = goalrad
         self.BIAS = 0.3
-        self.DIST = 0.1
+        self.DIST = 0.01
 
         self.start = start
         self.goal = goal
@@ -63,14 +65,17 @@ class RRT:
         return p3
 
     def collision(self, p1, p2):
-        # collision checker
+        self.RCM_Coordinates = np.array([1.050300 ,0.150100 ,0.37])
+        self.RCM_Orientation= np.array([-1,-1,1])
+        self.RCM_Radius = 0.1
+        self.Safety_Radius = 0.2
         ps = []
         for alpha in np.linspace(0, 1, 101):
             pnew= self.lin_interpol(p1, p2, alpha)
             ps.append(pnew)
         
         for p in ps:
-            # collision checker 
+            return(collision(p,self.RCM_Coordinates,self.RCM_Orientation,self.RCM_Radius,self.Safety_Radius))
             pass
         return False
 

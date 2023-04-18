@@ -4,6 +4,7 @@ import numpy as np
 from FK import tf_total
 import ellipsoid_sampler
 import time 
+from collision_checker import collision
 
 class Informed_RRT_star:
     def __init__(self, start, goal, goalrad):
@@ -11,7 +12,7 @@ class Informed_RRT_star:
         self.GOALRAD = goalrad
         
         self.BIAS = 0.2
-        self.DIST = 0.1
+        self.DIST = 0.01
         self.cmax = np.Inf
         self.NEIGH = 50
         self.start = start
@@ -79,13 +80,17 @@ class Informed_RRT_star:
         return p3
 
     def collision(self, p1, p2):
+        self.RCM_Coordinates = np.array([1.050300 ,0.150100 ,0.37])
+        self.RCM_Orientation= np.array([-1,-1,1])
+        self.RCM_Radius = 1
+        self.Safety_Radius = 0.2
         ps = []
         for alpha in np.linspace(0, 1, 101):
             pnew= self.lin_interpol(p1, p2, alpha)
             ps.append(pnew)
         
         for p in ps:
-            # collision checker 
+            return(collision(p,self.RCM_Coordinates,self.RCM_Orientation,self.RCM_Radius,self.Safety_Radius))
             pass
         return False
 
