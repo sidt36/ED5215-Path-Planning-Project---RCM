@@ -8,7 +8,7 @@
 
 **Tejas Rao - ME19B179**
 
-Various Path Planning Algorithms are implemented to enforce the RCM (Remote Centre of Motion) of a surgical robot. All the simulations are done using the KUKA iiwa 7 robot package on Gazebo. FK and Collision planning is natively implemented.
+Various Path Planning Algorithms are implemented to enforce the RCM (Remote Centre of Motion) of a surgical robot. All the simulations are done using the KUKA iiwa 7 robot package on Gazebo. FK and Constraint Checking is natively implemented.
 
 
 
