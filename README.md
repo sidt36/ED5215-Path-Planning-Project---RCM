@@ -27,7 +27,7 @@ Various Path Planning Algorithms implemented to solve the issues related to RCM 
 
 
 
-**Instructions:***
+**Instructions:(for contributors on local machine and repo)***
 
 - The algorithm folder, can be used, but code in deployment in RCM_Project/....../catkin_ws/src/iiwa_stack/iiwa_moveit/scripts.
 - To be similarly mirrored in HOME/catkin_ws
