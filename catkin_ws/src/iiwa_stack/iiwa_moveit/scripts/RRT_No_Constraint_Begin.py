@@ -1,13 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import print_function
-# from six.moves import input
 
-import sys
-import copy
-import rospy
-import moveit_commander
-import moveit_msgs.msg
-import geometry_msgs.msg
 
 import random
 import numpy as np 
@@ -17,7 +10,7 @@ class RRT:
     def __init__(self, start, goal, goalrad):
         self.ALPHA = 0.05
         self.GOALRAD = goalrad
-        self.BIAS = 0.2
+        self.BIAS = 0.3
         self.DIST = 0.1
 
         self.start = start
@@ -63,19 +56,18 @@ class RRT:
         return np.array([x1near, x2near, x3near, x4near, x5near, x6near, x7near]), idxnear
 
     def sample_envir(self):
-        # # If IK available:
-        # if self.BIAS > random.uniform(0, 1):
-        #     # Return IK of goal
-        #     pass
-        # else:
-        #     x1 = int(random.uniform(self.rangel, self.rangeh))
-        #     x2 = int(random.uniform(self.rangel, self.rangeh))
-        #     x3 = int(random.uniform(self.rangel, self.rangeh))
-        #     x4 = int(random.uniform(self.rangel, self.rangeh))
-        #     x5 = int(random.uniform(self.rangel, self.rangeh))
-        #     x6 = int(random.uniform(self.rangel, self.rangeh))
-        #     x7 = int(random.uniform(self.rangel, self.rangeh))
-        #     return np.array([x1, x2, x3, x4, x5, x6, x7])
+        if self.BIAS > random.uniform(0, 1):
+                return self.goal            
+        else:
+            x1 = int(random.uniform(self.rangel, self.rangeh))
+            x2 = int(random.uniform(self.rangel, self.rangeh))
+            x3 = int(random.uniform(self.rangel, self.rangeh))
+            x4 = int(random.uniform(self.rangel, self.rangeh))
+            x5 = int(random.uniform(self.rangel, self.rangeh))
+            x6 = int(random.uniform(self.rangel, self.rangeh))
+            x7 = int(random.uniform(self.rangel, self.rangeh))
+            return np.array([x1, x2, x3, x4, x5, x6, x7])
+
         x1 = random.uniform(self.rangel, self.rangeh)
         x2 = random.uniform(self.rangel, self.rangeh)
         x3 = random.uniform(self.rangel, self.rangeh)
@@ -112,10 +104,10 @@ class RRT:
             pnew = p2
         return pnew
 
-    def FK(self, p):
-        x1, x2, x3, x4, x5, x6, x7 = p
-        EE_position,_ = tf_total(x1,x2,x3,x4,x5,x6,x7)
-        return EE_position
+    # def FK(self, p):
+    #     x1, x2, x3, x4, x5, x6, x7 = p
+    #     EE_position,_ = tf_total(x1,x2,x3,x4,x5,x6,x7)
+    #     return EE_position
 
     def is_goal(self, p):
         
@@ -202,5 +194,5 @@ if __name__ == "__main__":
     goal = [0.5,0.5,0.5,0.5,0.5,0.5,0.5]
     RRT_Instance = RRT(start, np.array(goal), goalrad)
     Path = RRT_Instance.run_algo(3000)
-    print(tf_total(Path[-1][0],Path[-1][1],Path[-1][2],Path[-1][3],Path[-1][4],Path[-1][5],Path[-1][6]))
+    print((Path[-1][0],Path[-1][1],Path[-1][2],Path[-1][3],Path[-1][4],Path[-1][5],Path[-1][6]))
     print(Path)   
