@@ -1,17 +1,12 @@
 #!/usr/bin/env python3
-
-from __future__ import print_function
-
-from fk import tf_total
-from  Informed_RRT_Star_No_Constraint_working import Informed_RRT_star
-from RRT_No_Constraint_Begin import RRT 
-from RRT_Star_No_Constraint_7Dgoal import RRT_star
+from FK import tf_total
+from RRT_7D import RRT 
+from RRT_Star_7D import RRT_star
 
 import time
 import sys
 import rospy
 import moveit_commander
-
 
 from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
@@ -47,8 +42,6 @@ if __name__=="__main__":
     
 
     for config in Path:
-        
-
         joint_goal[0] = config[0]
         joint_goal[1] = config[1]
         joint_goal[2] = config[2]
@@ -64,8 +57,3 @@ if __name__=="__main__":
         pub.publish(s)
         print(s)
         time.sleep(0.1)
-        
-
-
-
-

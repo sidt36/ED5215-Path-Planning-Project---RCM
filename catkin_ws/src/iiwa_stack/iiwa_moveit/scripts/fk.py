@@ -10,8 +10,6 @@ def tf(t,d,a,al):
                         [0,0,0,1]])
     return T
 
-
-
 def tf_total(x1,x2,x3,x4,x5,x6,x7,location='needle_tip'):
     #Verfied the DH Parameters to be Accurate
     d1 = 0.34
@@ -23,9 +21,6 @@ def tf_total(x1,x2,x3,x4,x5,x6,x7,location='needle_tip'):
         d7 = 0.126
     if(location == 'needle_tip'):
         d7 = 0.645
-    
-
-
 
     TF1 = tf(x1,d1,0,-90)
     TF2 = tf(x2,0,0,90)
@@ -41,4 +36,3 @@ def tf_total(x1,x2,x3,x4,x5,x6,x7,location='needle_tip'):
     EE_Orientation = TF[0:3,0:3]
 
     return(EE_Position,EE_Orientation)
-

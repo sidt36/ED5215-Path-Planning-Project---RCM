@@ -13,8 +13,8 @@ def main():
     # ALGO = 'RRT'
     # ALGO = 'RRT_star'
     # ALGO = 'IRRT_star'
-    # ALGO = 'RRT_2'
-    ALGO = 'RRTC'
+    ALGO = 'RRT_2'
+    # ALGO = 'RRTC'
 
     MAPDIMS = (500, 1000)
     START = (100, 250)
@@ -88,7 +88,7 @@ def main():
     # pygame.display.update()
     pygame.event.clear()
 
-    imageio.mimsave(gif_name, frames, fps=5)
+    # imageio.mimsave(gif_name, frames, fps=5)
     
     # pygame.event.wait(5000)
     pygame.quit()
