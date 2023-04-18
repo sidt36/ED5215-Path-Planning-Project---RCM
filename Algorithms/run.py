@@ -53,7 +53,7 @@ def main():
         algo = RRTC(START, GOAL, GOALRAD, MAPDIMS, obstacles)
 
     # t1=time.time()
-    while ITER < 1000:
+    while ITER < 500:
         ITER += 1
         print(f'Searching for Goal, {ITER}')
 
@@ -63,7 +63,7 @@ def main():
             start_tree, goal_tree = algo.visualize_step()
             X1, Y1, P1 = start_tree['xs'], start_tree['ys'], start_tree['parents']
             X2, Y2, P2 = goal_tree['xs'], goal_tree['ys'], goal_tree['parents']
-        if ITER % 1 == 0:
+        if ITER % 10 == 0:
             if ALGO != 'RRTC':
                 map_.reset_draw_everything(X, Y, P)
             else:
@@ -88,7 +88,7 @@ def main():
     # pygame.display.update()
     pygame.event.clear()
 
-    # imageio.mimsave(gif_name, frames, fps=5)
+    imageio.mimsave(gif_name, frames, fps=5)
     
     # pygame.event.wait(5000)
     pygame.quit()
