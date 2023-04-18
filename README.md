@@ -1,4 +1,4 @@
-# ED5215 Path Planning Project - RCM
+# ED5215 Path Planning Project - RCM on the kuka iiwa 7
 
 ## Team:
 
@@ -8,7 +8,7 @@
 
 **Tejas Rao - ME19B179**
 
-Various Path Planning Algorithms implemented to solve the issues related to RCM (Remote Centre of Motion) of a surgical robot. All the simulations are done using the KUKA iiwa 7 robot package on Gazebo.
+Various Path Planning Algorithms are implemented to enforce the RCM (Remote Centre of Motion) of a surgical robot. All the simulations are done using the KUKA iiwa 7 robot package on Gazebo. FK and Collision planning is natively implemented.
 
 
 
