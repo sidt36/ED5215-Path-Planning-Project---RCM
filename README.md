@@ -16,7 +16,7 @@ Various Path Planning Algorithms are implemented to enforce the RCM (Remote Cent
 **Running the Code**
 - To open the simulator: roslaunch iiwa_tool_moveit moveit_planning_and_execution.launch
 - To start the controller: rosrun iiwa_control sunrise2.py 
-- To plan and execute path: rosrun iiwa_moveit main2.py
+- To plan and execute path: rosrun iiwa_moveit main_joint_pub.py
 - The above files need to opened in the order given.
 
 - All algorithms are available in different files in .../catkin_ws/src/iiwa_stack/iiwa_moveit/scripts. They need to imported and appropriately used in main2.py
