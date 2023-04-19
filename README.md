@@ -19,7 +19,7 @@ Various Path Planning Algorithms are implemented to enforce the RCM (Remote Cent
 - To plan and execute path: rosrun iiwa_moveit main_joint_pub.py
 - The above files need to opened in the order given.
 
-- All algorithms are available in different files in .../catkin_ws/src/iiwa_stack/iiwa_moveit/scripts. They need to imported and appropriately used in main2.py
+- All algorithms are available in different files in .../catkin_ws/src/iiwa_stack/iiwa_moveit/scripts. They need to imported and appropriately used in main_joint_pub.py
 
 
 
