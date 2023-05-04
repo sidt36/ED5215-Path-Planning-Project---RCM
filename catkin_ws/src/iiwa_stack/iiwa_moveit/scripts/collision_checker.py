@@ -26,6 +26,8 @@ def Safety_Radius_Check(Needle_Base_Position,Needle_Tip_Position,RCM_Coordinates
         flag = True
         if(np.linalg.norm(Needle_Tip_Position-RCM_Coordinates)<=Safety_Radius):
             flag = True
+            
+    flag = True
     return flag        
 
 def orientation_check(Needle_Base_Position,Needle_Tip_Position,RCM_Orientation):
@@ -40,7 +42,7 @@ def constraint_check(Needle_Base_Position,Needle_Tip_Position,RCM_Coordinates,RC
     x0  = Needle_Base_Position
     xf  = Needle_Tip_Position
     N = 1000
-    epsilon = 0.7
+    epsilon = 1
     # Alternatively
     # epsilon = np.dot(Needle_Tip_Position-Needle_Base_Position,RCM_Orientation)/(np.linalg.norm(Needle_Base_Position-Needle_Base_Position)*np.linalg.norm(RCM_Orientation))
     way_pt_gen = np.linspace(0, 1, N, endpoint=False)
@@ -53,13 +55,12 @@ def constraint_check(Needle_Base_Position,Needle_Tip_Position,RCM_Coordinates,RC
 
 
 if __name__=="__main__":
-    RCM_Coordinates = np.array([1.05 ,0.15 ,0.37])
+    RCM_Coordinates = np.array([0.4,0.4 ,0.4])
     RCM_Orientation= np.array([-1,-1,1])
-    RCM_Radius = 0.05
+    RCM_Radius = 0.015
     Safety_Radius = 0.2
 
-    configs = (-180 + 360*np.random.randn(100000,7))*np.pi/180 + np.array([-0.31151138,1.80007509,-1.13079344,0.75125231,0.26596497,-0.03258206,0.03375912])
-
+    configs = (-180 + 360*np.random.randn(100000,7))*np.pi/180 
     for j in range(configs.shape[0]):
          config = configs[j,:] 
          if(not collision(config,RCM_Coordinates,RCM_Orientation,RCM_Radius,Safety_Radius)):

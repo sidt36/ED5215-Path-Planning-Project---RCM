@@ -19,7 +19,9 @@ if __name__=="__main__":
     pub = rospy.Publisher('/command/JointPosition', String, queue_size=1)
 
     joint_goal = [0 for i in range(7)]
-    #start = [0.5,0.5,0.5,0.5,0.5,0.5,0.5]
+    #start = [0.5,0.5,-0.5,0.5,0.5,-0.5,0.5]
+    #start = [0.1,-0.3,-0.9,0.6,-0.5,0.2,0.7]
+
     #start = [14,93,14,49,-10,74,11]
     start = [-7,69,15,7,23,79,-3.00]
 
@@ -36,10 +38,14 @@ if __name__=="__main__":
     goalrad = 0.05
     #goal = np.array([-7,69,15,7,23,79,-3.00])*np.pi/180
     goal = np.array([14,93,14,49,-10,74,11])*np.pi/180
+
+    #goal = [0.5,0.5,-0.5,0.5,0.5,-0.5,0.5]
+    #goal = [0.1,-0.3,-0.9,0.6,-0.5,0.2,0.7]
+
     print(goal)
     #RRT_Instance = RRT(start, goal, goalrad)
-    #RRT_Instance = RRT_star(start, goal, goalrad)
-    RRT_Instance = Informed_RRT_star(start, goal, goalrad)
+    RRT_Instance = RRT_star(start, goal, goalrad)
+    #RRT_Instance = Informed_RRT_star(start, goal, goalrad)
     Path = RRT_Instance.run_algo(500)
     print(tf_total(Path[-1][0],Path[-1][1],Path[-1][2],Path[-1][3],Path[-1][4],Path[-1][5],Path[-1][6]))
     

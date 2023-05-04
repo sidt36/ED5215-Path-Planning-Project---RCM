@@ -36,13 +36,13 @@
       </camera>
     </gui>
     <model name="sphere">
-      <pose>1 0.4 0.3 0 0 0</pose>
+      <pose>0.4 0.4 0.4 0 0 0</pose>
       <static>true</static>
       <link name="link">
         <visual name="visual">
           <geometry>
             <sphere>
-              <radius>0.05</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>

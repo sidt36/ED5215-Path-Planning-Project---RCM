@@ -82,7 +82,7 @@ class Informed_RRT_star:
     def collision(self, p1, p2):
         self.RCM_Coordinates = np.array([1.050300 ,0.150100 ,0.37])
         self.RCM_Orientation= np.array([-1,-1,1])
-        self.RCM_Radius = 1
+        self.RCM_Radius = 0.1
         self.Safety_Radius = 0.2
         ps = []
         for alpha in np.linspace(0, 1, 101):
