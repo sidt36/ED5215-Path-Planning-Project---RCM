@@ -13,8 +13,8 @@ def main():
     # ALGO = 'RRT'
     # ALGO = 'RRT_star'
     # ALGO = 'IRRT_star'
-    ALGO = 'RRT_2'
-    # ALGO = 'RRTC'
+    # ALGO = 'RRT_2'
+    ALGO = 'RRTC'
 
     MAPDIMS = (500, 1000)
     START = (100, 250)
@@ -22,7 +22,7 @@ def main():
     OBSDIM = 30
     OBSNUM = 200
     GOALRAD = 30
-    MAP = 0
+    MAP = 1
 
     # Obstacles: 200, dims: 30
     # Hard: 0, 3, 6, 7
