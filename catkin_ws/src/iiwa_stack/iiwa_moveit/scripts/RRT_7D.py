@@ -65,9 +65,9 @@ class RRT:
         return p3
 
     def collision(self, p1, p2):
-        self.RCM_Coordinates = np.array([1.050300 ,0.150100 ,0.37])
+        self.RCM_Coordinates = np.array([0.695342 ,0.475406 ,0.477245])
         self.RCM_Orientation= np.array([-1,-1,1])
-        self.RCM_Radius = 0.1
+        self.RCM_Radius = 0.05
         self.Safety_Radius = 0.2
         ps = []
         for alpha in np.linspace(0, 1, 101):

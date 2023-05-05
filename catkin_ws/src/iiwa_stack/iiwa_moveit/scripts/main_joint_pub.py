@@ -23,7 +23,7 @@ if __name__=="__main__":
     #start = [0.1,-0.3,-0.9,0.6,-0.5,0.2,0.7]
 
     #start = [14,93,14,49,-10,74,11]
-    start = [-7,69,15,7,23,79,-3.00]
+    start = [26 ,27,22,-51,-23 ,62,-41]
 
     start = [i*np.pi/180 for i in start]
 
@@ -34,17 +34,18 @@ if __name__=="__main__":
     joint_goal[4] = start[4]
     joint_goal[5] = start[5]
     joint_goal[6] = start[6]
+    
 
-    goalrad = 0.05
+    goalrad = 0.01
     #goal = np.array([-7,69,15,7,23,79,-3.00])*np.pi/180
-    goal = np.array([14,93,14,49,-10,74,11])*np.pi/180
+    goal = np.array([44,23,15,-44,-37,80,0])*np.pi/180
 
     #goal = [0.5,0.5,-0.5,0.5,0.5,-0.5,0.5]
     #goal = [0.1,-0.3,-0.9,0.6,-0.5,0.2,0.7]
 
     print(goal)
-    #RRT_Instance = RRT(start, goal, goalrad)
-    RRT_Instance = RRT_star(start, goal, goalrad)
+    RRT_Instance = RRT(start, goal, goalrad)
+    #RRT_Instance = RRT_star(start, goal, goalrad)
     #RRT_Instance = Informed_RRT_star(start, goal, goalrad)
     Path = RRT_Instance.run_algo(500)
     print(tf_total(Path[-1][0],Path[-1][1],Path[-1][2],Path[-1][3],Path[-1][4],Path[-1][5],Path[-1][6]))

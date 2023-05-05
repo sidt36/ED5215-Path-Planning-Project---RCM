@@ -36,3 +36,18 @@ def tf_total(x1,x2,x3,x4,x5,x6,x7,location='needle_tip'):
     EE_Orientation = TF[0:3,0:3]
 
     return(EE_Position,EE_Orientation)
+
+
+if __name__ == "__main__":
+    start = [26 ,27,22,-51,-23 ,62,-41]
+    start = [i*np.pi/180 for i in start]
+    goal = np.array([44,23,15,-44,-37,80,0])*np.pi/180
+    print(goal)
+    print(tf_total(start[0],start[1],start[2],start[3],start[4],start[5],start[6]))
+    print(tf_total(goal[0],goal[1],goal[2],goal[3],goal[4],goal[5],goal[6]))
+
+
+
+
+
+    

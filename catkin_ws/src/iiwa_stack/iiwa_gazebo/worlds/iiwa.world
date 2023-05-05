@@ -35,8 +35,9 @@
 	<view_controller>orbit</view_controller>
       </camera>
     </gui>
+
     <model name="sphere">
-      <pose>0.4 0.4 0.4 0 0 0</pose>
+      <pose>0.695342 0.475406 0.477245 0 0 0</pose>
       <static>true</static>
       <link name="link">
         <visual name="visual">
@@ -51,8 +52,40 @@
         </visual>
       </link>
     </model>
-    
-    
+
+    <model name="sphere1">
+      <pose>0.84125267 0.54598384 0.32084772 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.01</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>Gazebo/WoodPallet</script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="sphere2">
+      <pose>0.77009919 0.48992327 0.41213478 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.01</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>Gazebo/WoodPallet</script>
+          </material>
+        </visual>
+      </link>
+    </model>        
     
     
   </world>
