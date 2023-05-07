@@ -9,7 +9,7 @@ class RRT:
     def __init__(self, start, goal, goalrad):
         self.ALPHA = 0.05
         self.GOALRAD = goalrad
-        self.BIAS = 0.3
+        self.BIAS = 0.7
         self.DIST = 0.01
 
         self.start = start
@@ -161,7 +161,7 @@ if __name__ == "__main__":
 
     start = np.array([0.1,0.1,0.1,0.1,0.1,0.1,0.1])
     goal = np.array([0.5,0.5,0.5,0.5,0.5,0.5,0.5])
-    goalrad = 0.5
+    goalrad = 0.01
     
     RRT_Instance = RRT(start, np.array(goal), goalrad)
     Path = RRT_Instance.run_algo(3000)

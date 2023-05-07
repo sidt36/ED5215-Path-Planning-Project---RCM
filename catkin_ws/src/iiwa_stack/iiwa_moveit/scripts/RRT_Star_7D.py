@@ -26,7 +26,7 @@ class RRT_star:
         self.GOALRAD = goalrad
         self.BIAS = 0.3
         self.DIST = 0.01
-        self.NEIGH = 1
+        self.NEIGH = 0.03
         self.start = start
         self.goal = goal
         self.goal_flag = False
