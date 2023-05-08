@@ -11,10 +11,10 @@ class Informed_RRT_star:
         self.ALPHA = 0.05
         self.GOALRAD = goalrad
         
-        self.BIAS = 0.2
+        self.BIAS = 0.7
         self.DIST = 0.01
         self.cmax = np.Inf
-        self.NEIGH = 50
+        self.NEIGH = self.DIST*3
         self.start = start
         self.goal = goal
         self.goal_flag = False
@@ -80,12 +80,12 @@ class Informed_RRT_star:
         return p3
 
     def collision(self, p1, p2):
-        self.RCM_Coordinates = np.array([1.050300 ,0.150100 ,0.37])
+        self.RCM_Coordinates = np.array([0.695342 ,0.475406 ,0.477245])
         self.RCM_Orientation= np.array([-1,-1,1])
-        self.RCM_Radius = 0.1
+        self.RCM_Radius = 0.03
         self.Safety_Radius = 0.2
         ps = []
-        for alpha in np.linspace(0, 1, 101):
+        for alpha in np.linspace(0, 1, 101):    
             pnew= self.lin_interpol(p1, p2, alpha)
             ps.append(pnew)
         

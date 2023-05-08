@@ -67,7 +67,7 @@ class RRT:
     def collision(self, p1, p2):
         self.RCM_Coordinates = np.array([0.695342 ,0.475406 ,0.477245])
         self.RCM_Orientation= np.array([-1,-1,1])
-        self.RCM_Radius = 0.05
+        self.RCM_Radius = 0.02
         self.Safety_Radius = 0.2
         ps = []
         for alpha in np.linspace(0, 1, 101):
@@ -161,7 +161,7 @@ if __name__ == "__main__":
 
     start = np.array([0.1,0.1,0.1,0.1,0.1,0.1,0.1])
     goal = np.array([0.5,0.5,0.5,0.5,0.5,0.5,0.5])
-    goalrad = 0.01
+    goalrad = 0.015
     
     RRT_Instance = RRT(start, np.array(goal), goalrad)
     Path = RRT_Instance.run_algo(3000)

@@ -24,9 +24,9 @@ class RRT_star:
     def __init__(self, start, goal, goalrad):
         self.ALPHA = 0.05
         self.GOALRAD = goalrad
-        self.BIAS = 0.3
+        self.BIAS = 0.7
         self.DIST = 0.01
-        self.NEIGH = 0.03
+        self.NEIGH = 3*self.DIST
         self.start = start
         self.goal = goal
         self.goal_flag = False
@@ -82,9 +82,9 @@ class RRT_star:
 
     def collision(self, p1, p2):
         # collision checker
-        self.RCM_Coordinates = np.array([1.050300 ,0.150100 ,0.37])
+        self.RCM_Coordinates = np.array([0.695342 ,0.475406 ,0.477245])
         self.RCM_Orientation= np.array([-1,-1,1])
-        self.RCM_Radius = 0.1
+        self.RCM_Radius = 0.02
         self.Safety_Radius = 0.2
         ps = []
         for alpha in np.linspace(0, 1, 101):

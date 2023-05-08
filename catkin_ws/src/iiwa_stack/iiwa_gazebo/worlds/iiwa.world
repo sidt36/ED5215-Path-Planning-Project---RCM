@@ -47,7 +47,10 @@
             </sphere>
           </geometry>
           <material>
-            <script>Gazebo/WoodPallet</script>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.2 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 0 0 1</emissive>
           </material>
         </visual>
       </link>
@@ -64,7 +67,10 @@
             </sphere>
           </geometry>
           <material>
-            <script>Gazebo/WoodPallet</script>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 1 0 1</emissive>
           </material>
         </visual>
       </link>
@@ -81,11 +87,35 @@
             </sphere>
           </geometry>
           <material>
-            <script>Gazebo/WoodPallet</script>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 1 0 1</emissive>
           </material>
         </visual>
       </link>
     </model>        
+
+
+    <model name="sphere3">
+      <pose>0.81827572 0.51660256 0.36534679 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.01</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 1 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>  
     
     
   </world>
