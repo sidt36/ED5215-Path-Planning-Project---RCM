@@ -9,3 +9,7 @@
 **Tejas Rao - ME19B179**
 
 Various Path Planning Algorithms implemented to solve the issues related to RCM (Remote Centre of Motion) of a surgical robot. All the simulations are done using the KUKA iiwa 7 robot package on Gazebo.
+
+The base code is obtained from : https://github.com/IFL-CAMP/iiwa_stack
+
+The modified URDF is obtained from the inspire lab at IIT Madras.
