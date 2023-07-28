@@ -10,6 +10,7 @@
 
 Various Path Planning Algorithms are implemented to enforce the RCM (Remote Centre of Motion) of a surgical robot. All the simulations are done using the KUKA iiwa 7 robot package on Gazebo. FK and Constraint Checking is natively implemented.
 
+**Videos of the Simulation** : https://drive.google.com/drive/folders/12K0Xaijfmy_5hERefWMMldL21ZPbWToz?usp=sharing
 
 
 
