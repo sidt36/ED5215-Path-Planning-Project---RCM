@@ -12,7 +12,7 @@ Various Path Planning Algorithms are implemented to enforce the RCM (Remote Cent
 
 **Videos of the Simulation** : https://drive.google.com/drive/folders/12K0Xaijfmy_5hERefWMMldL21ZPbWToz?usp=sharing
 
-
+The report and the presentation can be found in the repository.
 
 **Running the Code**
 - To open the simulator: roslaunch iiwa_tool_moveit moveit_planning_and_execution.launch
